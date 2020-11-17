@@ -1,0 +1,72 @@
+#include<iostream>
+using namespace std;
+
+class Matrix
+{
+
+ private:
+
+ int x[3][3];
+
+ public:
+
+ void getMat()
+ {
+  int i,j;
+  static int n;
+  n=n+1;
+  cout<<"Get Matrix "<<n<<" :"<<endl;
+
+  for(i=0;i<=2;i++)
+  {
+    for(j=0;j<=2;j++)
+    {
+      cin>>x[i][j];
+    }
+  }
+ }
+
+ void putMat()
+ {
+  int i,j;
+
+  for(i=0;i<=2;i++)
+  {
+    for(j=0;j<=2;j++)
+    {
+      cout<<x[i][j];
+      cout<<" ";
+    }
+    cout<<endl;
+  }
+  cout<<endl;
+ }
+
+ Matrix add(Matrix);
+};
+
+ Matrix Matrix::add(Matrix T)
+{
+  int i,j;
+  Matrix K;
+  for(i=0;i<=2;i++)
+  {
+   for(j=0;j<=2;j++)
+   {
+     K.x[i][j]=x[i][j]+T.x[i][j];
+   }
+  }
+  return(K);
+}
+
+int main()
+{
+ Matrix M1,M2,M3;
+ M1.getMat();
+ M1.putMat();
+ M2.getMat();
+ M2.putMat();
+ M3=M1.add(M2);
+ M3.putMat();
+ return(0);
+}
